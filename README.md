@@ -8,10 +8,6 @@ My favorite is by running the following command:
 
 ```git clone https://github.com/cscie114/assignment-4-gatsby-mrtyson93.git```
 
-#### Step 2: Setup .env file
-- Create a file called ```.env``` in the root directory of this project. 
-- Create an api key for the omdbapi at this [link](http://www.omdbapi.com/apikey.aspx)
-- In the .env file, add one line that is ```MOVIE_API_KEY="<your_key>"``` where ```<your_key>``` is the key you just created from the above link
 
 #### Step 3: Install local requirements
 

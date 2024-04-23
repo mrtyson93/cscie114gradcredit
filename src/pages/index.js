@@ -13,8 +13,8 @@ const IndexPage = ({ data }) => {
       <ul>
         {movies.map((movie) => {
             return (
-                <li key={movie.movieId}>
-                    <p>{movie.movieName}</p>
+                <li key={movie.title}>
+                    <p>{movie.year}</p>
                 </li>)
         })}
       </ul>      
@@ -27,8 +27,8 @@ export const query = graphql`
     query MoviesPageQuery {
         allMoviesJson {
             nodes {
-                movieName
-                movieId
+                title
+                year
             }
         }
     }
