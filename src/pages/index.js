@@ -3,21 +3,24 @@ import Layout from '../components/layout'
 import { graphql } from 'gatsby';
 
 
+const pinocchio = "Pinocchio"
 
 const IndexPage = ({ data }) => {
   const movies = data.allMoviesJson.nodes;
-  console.log("yeehaw" + movies)
   return (
-    <Layout pageTitle="An Anthology of Adam Driver Movies">
+    <Layout pageTitle="GraphQL Practice">
     <div>
-      <ul>
-        {movies.map((movie) => {
-            return (
-                <li key={movie.title}>
-                    <p>{movie.year}</p>
-                </li>)
-        })}
-      </ul>      
+      {movies?.length === 1 && movies[0].title === pinocchio &&
+        <div>
+          <p>Congratulations! You successfully queried and filtered specifically for the movie {pinocchio} in GraphQL!</p>
+        </div>
+      }
+
+      {(movies?.length !== 1 || movies[0].title !== pinocchio) &&
+        <div>
+          <p>Sorry! You haven't successfully queried for the pinocchio movie yet.</p>
+        </div>
+      }
     </div>
   </Layout>
   )
@@ -26,10 +29,11 @@ const IndexPage = ({ data }) => {
 export const query = graphql`
     query MoviesPageQuery {
         allMoviesJson {
-            nodes {
-                title
-                year
+          edges {
+            node {
+              id
             }
+          }
         }
     }
 `
